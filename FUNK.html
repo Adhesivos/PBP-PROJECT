@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>PBP PROJECT - Funkos Personalizados</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap');
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: #222;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    header {
+      background: linear-gradient(90deg, #ff4081, #7c4dff);
+      color: white;
+      padding: 2.5rem 0 1.5rem 0;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(124,77,255,0.1);
+      position: relative;
+      min-height: 170px;
+    }
+    .logo-img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      border-radius: 20px;
+      box-shadow: 0 2px 16px #ff408144;
+      background: #fff;
+      position: absolute;
+      left: 2rem;
+      top: 2rem;
+      border: 3px solid #fff;
+      z-index: 2;
+    }
+    .qr-section {
+      position: absolute;
+      right: 2rem;
+      top: 2rem;
+      display: flex;
+      align-items: center;
+      z-index: 2;
+    }
+    .qr-label {
+      color: #7c4dff;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-right: 1rem;
+      letter-spacing: 1px;
+      background: #fffbea;
+      padding: 0.3rem 1rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #ff408122;
+    }
+    .qr-img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      border-radius: 20px;
+      background: #fff;
+      border: 3px solid #7c4dff44;
+      box-shadow: 0 2px 16px #ff408144;
+      transition: transform 0.3s;
+    }
+    .qr-img:hover {
+      transform: scale(1.08) rotate(3deg);
+      box-shadow: 0 4px 32px #7c4dff55;
+    }
+    .logo {
+      font-size: 2.5rem;
+      letter-spacing: 3px;
+      font-weight: 700;
+      text-shadow: 0 2px 8px #7c4dff77;
+      animation: neon 1.7s infinite alternate;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    @keyframes neon {
+      from { text-shadow: 0 2px 8px #7c4dff77, 0 0 10px #ff408155; }
+      to   { text-shadow: 0 4px 24px #ff4081cc, 0 0 24px #7c4dffcc; }
+    }
+    .subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+      letter-spacing: 1px;
+      font-weight: 400;
+    }
+    nav {
+      margin: 2rem 0 0.5rem 0;
+      z-index: 10;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+    }
+    nav a {
+      color: #fff;
+      background: linear-gradient(90deg, #7c4dff, #ff4081);
+      text-decoration: none;
+      padding: 0.6rem 1.5rem;
+      border-radius: 30px;
+      font-weight: 700;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 8px #ff408144;
+      font-size: 1rem;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      z-index: 20;
+      position: relative;
+    }
+    nav a:hover {
+      background: linear-gradient(90deg, #ff4081, #7c4dff);
+      color: #fffbea;
+      box-shadow: 0 4px 16px #7c4dff44;
+      letter-spacing: 2px;
+    }
+    .reviews {
+      background: #fffbea;
+      border-radius: 20px;
+      box-shadow: 0 4px 24px #7c4dff11;
+      padding: 1.5rem 2rem;
+      margin: 2rem auto 3rem auto;
+      max-width: 700px;
+      text-align: center;
+      color: #7c4dff;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    .reviews a.btn {
+      display: inline-block;
+      margin-top: 0.7rem;
+    }
+    .funkos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.5rem;
+      margin: 3rem auto;
+      max-width: 1300px;
+    }
+    .funko-card {
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 8px 32px #7c4dff22;
+      width: 260px;
+      padding: 1.5rem 1rem 1.2rem 1rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border: 3px solid #ff408110;
+    }
+    .funko-card:hover {
+      transform: translateY(-12px) scale(1.06) rotate(-2deg);
+      box-shadow: 0 16px 48px #ff408133;
+      border: 3px solid #ff4081;
+      z-index: 2;
+    }
+    .funko-img {
+      width: 120px;
+      height: 160px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 8px 16px #ff408155);
+      transition: filter 0.3s;
+      background: #f5f7fa;
+      border-radius: 12px;
+      border: 2px solid #7c4dff22;
+    }
+    .funko-card:hover .funko-img {
+      filter: drop-shadow(0 12px 32px #7c4dff99) brightness(1.1);
+    }
+    .funko-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #7c4dff;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+      text-shadow: 0 1px 3px #ff408122;
+    }
+    .funko-desc {
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 1rem;
+      opacity: 0.85;
+    }
+    .btn {
+      background: linear-gradient(90deg, #ff4081, #7c4dff);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 8px #ff408144;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn:hover {
+      background: linear-gradient(90deg, #7c4dff, #ff4081);
+      box-shadow: 0 4px 16px #7c4dff44;
+      letter-spacing: 2px;
+      color: #fffbea;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 0 1rem 0;
+      color: #7c4dff;
+      background: transparent;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .funkos { flex-direction: column; align-items: center; }
+      .funko-card { width: 90vw; }
+      .reviews { padding: 1rem; }
+      .logo { font-size: 2rem; }
+      .logo-img { position: static; display: block; margin: 0 auto 1rem auto; }
+      .qr-section { position: static; justify-content: center; margin-top: 1rem; margin-right: 0; }
+      nav { flex-direction: column; gap: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo PBP PROJECT" class="logo-img">
+    <div class="qr-section">
+      <span class="qr-label">¡Escanéame y pide tu Funko!</span>
+      <img src="qr.jpg" alt="QR PBP PROJECT" class="qr-img">
+    </div>
+    <div class="logo">PBP PROJECT</div>
+    <div class="subtitle">Funkos personalizados únicos para ti, tu pareja o tu peña.<br>¡Pedidos especiales de Monforte del Cid y figuras de San Pascual y La Purísima!</div>
+    <!-- NAVIGATION LINKS -->
+    <nav>
+      <a href="http://pbproject.es/" target="_blank">Web Oficial</a>
+      <a href="https://www.instagram.com/pbpproject/" target="_blank">Instagram</a>
+      <a href="https://www.google.com/search?sca_esv=7fa1b1456907b88d&rlz=1C1GCEU_esES940ES940&q=pbp+project&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E0vr8RuLnHUN2ZsUO6uZ65qI-pYHeAttmelYqc2ppA0YQIKXEn8G0BtB_AuAikVBZ8a67_I%3D&uds=AOm0WdFjhyjv-N7IxYZGImag8WESu4Q0RJYd7JIGBh8RXzNngU7mexjzRoWLpnv_DKGt_O0Q5PtbD16Ok2BKT7NwwSrUB1TA1_adyau4DLkvAsisTmudJ3k&sa=X&ved=2ahUKEwiUgZqbhoyOAxUoT6QEHUzIA8cQ3PALegQIHhAE&biw=1920&bih=953" target="_blank">Reseñas Google</a>
+    </nav>
+  </header>
+
+  <section class="reviews">
+    ⭐⭐⭐⭐⭐ ¡Descubre lo que opinan nuestros clientes!  
+    <br>
+    <a href="https://www.google.com/search?sca_esv=7fa1b1456907b88d&rlz=1C1GCEU_esES940ES940&q=pbp+project&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E0vr8RuLnHUN2ZsUO6uZ65qI-pYHeAttmelYqc2ppA0YQIKXEn8G0BtB_AuAikVBZ8a67_I%3D&uds=AOm0WdFjhyjv-N7IxYZGImag8WESu4Q0RJYd7JIGBh8RXzNngU7mexjzRoWLpnv_DKGt_O0Q5PtbD16Ok2BKT7NwwSrUB1TA1_adyau4DLkvAsisTmudJ3k&sa=X&ved=2ahUKEwiUgZqbhoyOAxUoT6QEHUzIA8cQ3PALegQIHhAE&biw=1920&bih=953" class="btn" target="_blank">Ver reseñas y dejar la tuya</a>
+  </section>
+
+  <section class="funkos">
+    <!-- Ejemplo Individual -->
+    <div class="funko-card">
+      <img class="funko-img" src="funko1.jpg" alt="Funko Individual">
+      <div class="funko-title">Funko Personalizado Individual</div>
+      <div class="funko-desc">¡Tu propio Funko hecho a mano! Ideal para regalar o coleccionar.<br>
+        <a href="https://www.instagram.com/p/DKcIiTANINj/" class="btn" target="_blank">Ver publicación</a>
+      </div>
+    </div>
+    <!-- Ejemplo Pareja -->
+    <div class="funko-card">
+      <img class="funko-img" src="funko2.jpg" alt="Funko Pareja">
+      <div class="funko-title">Funko Pareja</div>
+      <div class="funko-desc">Celebra el amor con un Funko doble personalizado.<br>
+        <a href="https://www.instagram.com/p/DLTBZMVNBQR/" class="btn" target="_blank">Ver publicación</a>
+      </div>
+    </div>
+    <!-- Ejemplo MyC Monforte del Cid -->
+    <div class="funko-card">
+      <img class="funko-img" src="funko3.jpg" alt="Funko MyC Monforte del Cid">
+      <div class="funko-title">Funko MyC Monforte del Cid</div>
+      <div class="funko-desc">¡Personaliza tu peña o grupo con Funkos únicos de Monforte del Cid!</div>
+    </div>
+    <!-- Ejemplo San Pascual -->
+    <div class="funko-card">
+      <img class="funko-img" src="funko4.jpg" alt="Funko San Pascual">
+      <div class="funko-title">Funko San Pascual</div>
+      <div class="funko-desc">Figura exclusiva de San Pascual, símbolo de tradición y devoción.</div>
+    </div>
+    <!-- Ejemplo La Purísima -->
+    <div class="funko-card">
+      <img class="funko-img" src="funko5.jpg" alt="Funko La Purísima">
+      <div class="funko-title">Funko La Purísima</div>
+      <div class="funko-desc">Rinde homenaje a La Purísima con tu propio Funko personalizado.</div>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 PBP PROJECT | Funkos hechos con pasión en Monforte del Cid
+  </footer>
+</body>
+</html>
